@@ -1,0 +1,101 @@
+html, body {
+    width : 100%;
+    height : 100%;
+    margin : 0 auto;
+    
+}
+
+.top-bar {
+    width: 100%;
+    height: 13%;
+    background-color: 		#1a1a1a;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-variant: small-caps;
+}
+
+.top-bar h2 {
+    color: white;
+    margin: 0 auto;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+.nav-bar {
+    background-color: #ff4d4d;
+    overflow: hidden;
+    text-align: center;
+    width:100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.nav-bar ul {
+   list-style: none;
+   text-align: center;
+}
+
+.nav-bar ul li {
+   display: inline-block;
+}
+/* Style the links inside the navigation bar */
+.nav-bar a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.nav-bar a:hover {
+
+}
+
+/* Add a color to the active/current link */
+.nav-bar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.img-bar {
+    width: 100%;
+    height:20%;
+    background-image: url("https://startupsuccessstories.com/wp-content/uploads/2015/10/bk.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.main-body {
+    width:100%;
+    height: fit-content;
+}
+
+.col-1 {
+    width:22%;
+    display: inline-block;
+}
+
+.col-2 {
+    width:70%;
+    display: inline-block;
+}
+
+.col-3 {
+    width:15%;
+    display: inline-block;
+}
+
+.footer {
+    width: 100%;
+    height: 25%;
+    background-color: 		#1a1a1a;
+}
+
+table img {
+    height:60%;
+}
+
