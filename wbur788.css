@@ -15,6 +15,11 @@ html, body {
     font-variant: small-caps;
 }
 
+.top-bar img{
+    height:100%;
+    float:left;
+}
+
 .top-bar h2 {
     color: white;
     margin: 0 auto;
@@ -72,6 +77,7 @@ html, body {
 .main-body {
     width:100%;
     height: fit-content;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .col-1 {
@@ -97,5 +103,10 @@ html, body {
 
 table img {
     height:60%;
+}
+
+#search {
+    width:83.5%;
+    margin-bottom:2%;
 }
 

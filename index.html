@@ -5,11 +5,12 @@
         <link rel="stylesheet" type="text/css" href="wbur788.css"/>
         <script src="wbur788.js"></script>
         <script>
-            window.onload = getBooks();
+            window.onload = getBr();
         </script>
     </head>
     <body>
         <div class="top-bar">
+            <img src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/Logo"/>
             <h2>La Boutique Cassée</h2>
         </div>
         <div class="nav-bar">
@@ -26,6 +27,7 @@
             <div class="col-1"></div>
             <div class="col-2">
                 <h1>Book List</h1>
+                <input type="text" class="form-control" id="search" placeholder="Search for plays here...">
                 <table id="showTab"></table>
             </div>
             <div class="col-3"></div> 
