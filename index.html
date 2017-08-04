@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="wbur788.css"/>
         <script src="wbur788.js"></script>
         <script>
-            //window.onload = getBr();
+
         </script>
     </head>
     <body>
@@ -26,8 +26,9 @@
         <div class="main-body">
             <div class="col-1"></div>
             <div class="col-2">
-                <h1>Book List</h1>
-                <input type="text" class="form-control" id="search" placeholder="Search for plays here...">
+                <h1 id="book_head">Book List</h1><h1 id="br_head">Blu-Ray List</h1>
+                <input type="text" class="search" id="search_book" placeholder="Enter book title here...">
+                <input type="text" class="search" id="search_br" placeholder="Enter blu-ray title here...">
                 <table id="showTab_Books"></table>
                 <table id="showTab_Br"></table>
             </div>
@@ -35,4 +36,14 @@
         </div>
         <div class="footer"></div>
     </body>
+    <script>
+            //https://www.w3schools.com/jsref/met_document_addeventlistener.asp
+            document.getElementById("search_book").addEventListener("keyup", function() {
+                searchBooks(this.value);
+            });   
+            
+            document.getElementById("search_br").addEventListener("keyup", function() {
+                searchBr(this.value);
+            });  
+    </script>
 </html>

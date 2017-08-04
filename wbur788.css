@@ -101,11 +101,28 @@ html, body {
     background-color: 		#1a1a1a;
 }
 
-table img {
-    height:60%;
+table {
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
 }
 
-#search {
+table td {
+     border: solid 1px 	#d5d5dd;
+     padding-bottom: 2%;
+}
+
+table img {
+    height:60%;
+    display:inline-block;
+    margin-top:10%;
+}
+
+table figcaption {
+    text-align: center;
+}
+
+.search {
     width:83.5%;
     margin-bottom:2%;
 }
