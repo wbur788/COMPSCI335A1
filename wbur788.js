@@ -26,7 +26,6 @@ function searchBooks(search_term) {
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = function () {
         var resp = JSON.parse(xhr.responseText);
-        
         showBooks(resp);
     }
     xhr.send(null);
@@ -48,7 +47,7 @@ function showBooks(books) {
             }
         }
 
-        tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + "'/><figcaption>" + record.AuthorInitials + " " + record.AuthorSurname + "</figcaption><figcaption>"+ record.Title + "</figcaption></td>";
+        tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + "'/><figcaption>" + record.AuthorInitials + " " + record.AuthorSurname + "</figcaption><figcaption>"+ record.Title + "</figcaption><button class='buyNowBtn' onclick='buyBook(this)' value='" + record.Id + "'>Buy Now</button></td>";
 
         counter += 1;
 
@@ -111,7 +110,7 @@ function showBr(br) {
             }
         }
 
-        tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + "'/><figcaption>" + record.Title + "</figcaption></td>";
+        tableContent += "<td><img src='http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + "'/><figcaption>" + record.Title + "</figcaption><button class='buyNowBtn' onclick='buyBr(this)' value='" + record.Id + "'>Buy Now</button></td>";
 
         counter += 1;
 
@@ -158,9 +157,13 @@ function submitComment() {
 
     xhr.send(jsonComment); 
 
-    document.getElementById('commentFrame').src = document.getElementById('commentFrame').src
-    document.getElementById("commentName").value = "";
-    document.getElementById("commentIn").value = "";
+    xhr.onload = function() {
+        document.getElementById('commentFrame').src = document.getElementById('commentFrame').src
+        document.getElementById("commentName").value = "";
+        document.getElementById("commentIn").value = "";
+    }
+    
+    
 }
 
 function registerUser() {
@@ -186,16 +189,24 @@ function registerUser() {
         document.getElementById("successMsg").innerHTML = "Registered Successfully";        
     }
 
-    document.getElementById("regUsername").value = "";
-    document.getElementById("regAddress").value = "";
-    document.getElementById("regPassword").value = "";
+    xhr.onload = function() {
+        document.getElementById("regUsername").value = "";
+        document.getElementById("regAddress").value = "";
+        document.getElementById("regPassword").value = "";
+    }
+
 }
 
-function showSuccess() {
-    
+// https://stackoverflow.com/questions/12485759/onclick-function-this-returns-window-object
+function buyBook(objPassed) {
+    var bookId = objPassed.value;
+    window.open("http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/bookbuy?id=" + bookId, "_blank");
 }
 
-
+function buyBr(objPassed) {
+    var brId = objPassed.value;
+    window.open("http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/brbuy?id=" + brId, "_blank");
+}
 
 function hideAll(hideId) {
     var x = document.getElementById(hideId).children;
