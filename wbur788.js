@@ -1,4 +1,5 @@
 function getBooks() {
+    //https://www.w3schools.com/jsref/prop_element_classlist.asp
     if (document.getElementById("bookTab").classList.contains("hidden")) {
         document.getElementById("bookTab").classList.remove("hidden");
         document.getElementById("brTab").classList.add("hidden");
@@ -16,8 +17,6 @@ function getBooks() {
 }
 
 function searchBooks(search_term) {
-   /*   document.getElementById("showTab_Books").hidden = false;
-    document.getElementById("showTab_Br").hidden = true;  */
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booksearch?term=" + search_term;
     var xhr = new XMLHttpRequest();
@@ -121,6 +120,34 @@ function showBr(br) {
     
     document.getElementById("showTab_Br").innerHTML = tableContent;
 }
+
+function getComments() {
+    if (document.getElementById("guestBookTab").classList.contains("hidden")) {
+        document.getElementById("guestBookTab").classList.remove("hidden");
+        document.getElementById("brTab").classList.add("hidden");
+        document.getElementById("bookTab").classList.add("hidden");
+    }
+
+}
+
+function submitComment() {
+    var comment = document.getElementById("commentIn").value;
+    var name = document.getElementById("commentName").value;
+
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name=" + name;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", uri, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    var jsonComment = JSON.stringify(comment);
+    
+    console.log(jsonComment);
+    console.log(jsonComment.length);
+    xhr.send(jsonComment); 
+
+    document.getElementById('commentFrame').src = document.getElementById('commentFrame').src
+}
+
+
 
 function hideAll(hideId) {
     var x = document.getElementById(hideId).children;

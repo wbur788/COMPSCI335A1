@@ -36,6 +36,21 @@
                     <input type="text" class="search" id="search_br" placeholder="Enter blu-ray title here...">
                     <table id="showTab_Br"></table>
                 </div>
+
+                <div id= "guestBookTab" class="hidden">
+                    <h1 id="guestBook_head">Guestbook</h1>
+                    <div id= "submitContainer">
+                        <p>Submit a comment:</p>
+                        <textarea id="commentIn" required></textarea>
+                        <p>Your name:</p>
+                        <input type="text" id="commentName" required>
+                        <div></div>
+                        <input type="submit" value="Submit" onclick="submitComment()">
+                    </div>
+
+                    
+                    <iframe src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments" id="commentFrame"></iframe>
+                </div>
             </div>
             <div class="col-3"></div> 
         </div>
