@@ -5,7 +5,6 @@
         <link rel="stylesheet" type="text/css" href="wbur788.css"/>
         <script src="wbur788.js"></script>
         <script>
-
         </script>
     </head>
     <body>
@@ -19,18 +18,24 @@
                 <li><a onclick="getBooks()">Books</a></li>
                 <li><a onclick="getBr()">Blu-Ray</a></li>
                 <li><a href="#about">Register</a></li>
-                <li><a href="#about">Guestbook</a></li>
+                <li><a onclick="getComments()">Guestbook</a></li>
             </ul>
         </div>
         <div class="img-bar"></div>
         <div class="main-body">
             <div class="col-1"></div>
             <div class="col-2">
-                <h1 id="book_head">Book List</h1><h1 id="br_head">Blu-Ray List</h1>
-                <input type="text" class="search" id="search_book" placeholder="Enter book title here...">
-                <input type="text" class="search" id="search_br" placeholder="Enter blu-ray title here...">
-                <table id="showTab_Books"></table>
-                <table id="showTab_Br"></table>
+                <div id= "bookTab" class="hidden">
+                    <h1 id="book_head">Book List</h1>
+                    <input type="text" class="search" id="search_book" placeholder="Enter book title here...">
+                    <table id="showTab_Books"></table>
+                </div>
+
+                <div id= "brTab" class="hidden">
+                    <h1 id="br_head">Blu-Ray List</h1>
+                    <input type="text" class="search" id="search_br" placeholder="Enter blu-ray title here...">
+                    <table id="showTab_Br"></table>
+                </div>
             </div>
             <div class="col-3"></div> 
         </div>
@@ -45,5 +50,6 @@
             document.getElementById("search_br").addEventListener("keyup", function() {
                 searchBr(this.value);
             });  
+
     </script>
 </html>

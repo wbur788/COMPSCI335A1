@@ -1,5 +1,8 @@
 function getBooks() {
-    showBookTab();
+    if (document.getElementById("bookTab").classList.contains("hidden")) {
+        document.getElementById("bookTab").classList.remove("hidden");
+        document.getElementById("brTab").classList.add("hidden");
+    }
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
     var xhr = new XMLHttpRequest();
@@ -13,8 +16,8 @@ function getBooks() {
 }
 
 function searchBooks(search_term) {
-    document.getElementById("showTab_Books").hidden = false;
-    document.getElementById("showTab_Br").hidden = true;
+   /*   document.getElementById("showTab_Books").hidden = false;
+    document.getElementById("showTab_Br").hidden = true;  */
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booksearch?term=" + search_term;
     var xhr = new XMLHttpRequest();
@@ -59,7 +62,10 @@ function showBooks(books) {
 }
 
 function getBr() {
-    showBrTab();
+    if (document.getElementById("brTab").classList.contains("hidden")) {
+        document.getElementById("brTab").classList.remove("hidden");
+        document.getElementById("bookTab").classList.add("hidden");
+    }
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brlist";
     var xhr = new XMLHttpRequest();
@@ -73,8 +79,6 @@ function getBr() {
 }
 
 function searchBr(search_term) {
-    document.getElementById("showTab_Books").hidden = true;
-    document.getElementById("showTab_Br").hidden = false;
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brsearch?term=" + search_term;
     var xhr = new XMLHttpRequest();
@@ -118,20 +122,10 @@ function showBr(br) {
     document.getElementById("showTab_Br").innerHTML = tableContent;
 }
 
-function showBookTab() {
-    document.getElementById("showTab_Books").hidden = false;
-    document.getElementById("showTab_Br").hidden = true;
-    document.getElementById("br_head").hidden = true;
-    document.getElementById("search_br").hidden = true;
-    document.getElementById("book_head").hidden = false;
-    document.getElementById("search_book").hidden = false;
-}
-
-function showBrTab() {
-    document.getElementById("showTab_Br").hidden = false;
-    document.getElementById("showTab_Books").hidden = true;
-    document.getElementById("br_head").hidden = false;
-    document.getElementById("search_br").hidden = false;
-    document.getElementById("book_head").hidden = true;
-    document.getElementById("search_book").hidden = true;
+function hideAll(hideId) {
+    var x = document.getElementById(hideId).children;
+    for (i=0;i<x.length;i++) {
+        x[i].hidden = true;
+    }
+    
 }

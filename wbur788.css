@@ -81,7 +81,7 @@ html, body {
 }
 
 .col-1 {
-    width:22%;
+    width:15%;
     display: inline-block;
 }
 
@@ -127,3 +127,7 @@ table figcaption {
     margin-bottom:2%;
 }
 
+
+.hidden {
+    display: none;
+}
