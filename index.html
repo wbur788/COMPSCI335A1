@@ -17,7 +17,7 @@
                 <li><a onclick="showHome()">Home</a></li>
                 <li><a onclick="getBooks()">Books</a></li>
                 <li><a onclick="getBr()">Blu-Ray</a></li>
-                <li><a href="#about">Register</a></li>
+                <li><a onclick="getRegister()">Register</a></li>
                 <li><a onclick="getComments()">Guestbook</a></li>
             </ul>
         </div>
@@ -37,6 +37,19 @@
                     <table id="showTab_Br"></table>
                 </div>
 
+                <div id= "registerTab" class="hidden">
+                    <h1 id="register_head">Register</h1>
+
+                    <label for="regUsername">Username: </label>
+                    <input type="text" id="regUsername"><br>
+                    <label for="regAddress">Address: </label>
+                    <input type="text" id="regAddress"><br>    
+                    <label for="regPassword">Password: </label>                
+                    <input type="password" id="regPassword"><br>
+                    <input type="submit" value="Submit" onclick="registerUser()" id="regSubmit" onsubmit="showSuccess()">
+                    <div id="successMsg"></div>
+                </div>
+
                 <div id= "guestBookTab" class="hidden">
                     <h1 id="guestBook_head">Guestbook</h1>
                     <div id= "submitContainer">
@@ -48,7 +61,7 @@
                         <input type="submit" value="Submit" onclick="submitComment()">
                     </div>
 
-                    
+                    <!-- https://www.w3schools.com/html/html_iframe.asp -->
                     <iframe src="http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments" id="commentFrame"></iframe>
                 </div>
             </div>

@@ -3,6 +3,8 @@ function getBooks() {
     if (document.getElementById("bookTab").classList.contains("hidden")) {
         document.getElementById("bookTab").classList.remove("hidden");
         document.getElementById("brTab").classList.add("hidden");
+        document.getElementById("registerTab").classList.add("hidden");
+        document.getElementById("guestBookTab").classList.add("hidden");
     }
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
@@ -64,6 +66,8 @@ function getBr() {
     if (document.getElementById("brTab").classList.contains("hidden")) {
         document.getElementById("brTab").classList.remove("hidden");
         document.getElementById("bookTab").classList.add("hidden");
+        document.getElementById("registerTab").classList.add("hidden");
+        document.getElementById("guestBookTab").classList.add("hidden");
     }
 
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brlist";
@@ -126,9 +130,21 @@ function getComments() {
         document.getElementById("guestBookTab").classList.remove("hidden");
         document.getElementById("brTab").classList.add("hidden");
         document.getElementById("bookTab").classList.add("hidden");
+        document.getElementById("registerTab").classList.add("hidden");
     }
 
 }
+
+function getRegister() {
+    if (document.getElementById("registerTab").classList.contains("hidden")) {
+        document.getElementById("registerTab").classList.remove("hidden");
+        document.getElementById("brTab").classList.add("hidden");
+        document.getElementById("bookTab").classList.add("hidden");
+        document.getElementById("guestBookTab").classList.add("hidden");
+    }
+
+}
+
 
 function submitComment() {
     var comment = document.getElementById("commentIn").value;
@@ -138,13 +154,45 @@ function submitComment() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", uri, true);
     xhr.setRequestHeader("Content-Type", "application/json");
-    var jsonComment = JSON.stringify(comment);
-    
-    console.log(jsonComment);
-    console.log(jsonComment.length);
+    var jsonComment = JSON.stringify(comment);    
+
     xhr.send(jsonComment); 
 
     document.getElementById('commentFrame').src = document.getElementById('commentFrame').src
+    document.getElementById("commentName").value = "";
+    document.getElementById("commentIn").value = "";
+}
+
+function registerUser() {
+    var username = document.getElementById("regUsername").value;
+    var address = document.getElementById("regAddress").value;
+    var password = document.getElementById("regPassword").value;
+
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/register";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", uri, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    var jsonComment = JSON.stringify(
+        {
+            Address : address,
+            Name : username,
+            Password : password
+        }
+    );
+
+    xhr.send(jsonComment); 
+
+    if (username && password != null) {
+        document.getElementById("successMsg").innerHTML = "Registered Successfully";        
+    }
+
+    document.getElementById("regUsername").value = "";
+    document.getElementById("regAddress").value = "";
+    document.getElementById("regPassword").value = "";
+}
+
+function showSuccess() {
+    
 }
 
 
