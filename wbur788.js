@@ -2,6 +2,7 @@ function getBooks() {
     //https://www.w3schools.com/jsref/prop_element_classlist.asp
     if (document.getElementById("bookTab").classList.contains("hidden")) {
         document.getElementById("bookTab").classList.remove("hidden");
+        document.getElementById("homeTab").classList.add("hidden");
         document.getElementById("brTab").classList.add("hidden");
         document.getElementById("registerTab").classList.add("hidden");
         document.getElementById("guestBookTab").classList.add("hidden");
@@ -64,6 +65,7 @@ function showBooks(books) {
 function getBr() {
     if (document.getElementById("brTab").classList.contains("hidden")) {
         document.getElementById("brTab").classList.remove("hidden");
+        document.getElementById("homeTab").classList.add("hidden");
         document.getElementById("bookTab").classList.add("hidden");
         document.getElementById("registerTab").classList.add("hidden");
         document.getElementById("guestBookTab").classList.add("hidden");
@@ -127,6 +129,7 @@ function showBr(br) {
 function getComments() {
     if (document.getElementById("guestBookTab").classList.contains("hidden")) {
         document.getElementById("guestBookTab").classList.remove("hidden");
+        document.getElementById("homeTab").classList.add("hidden");
         document.getElementById("brTab").classList.add("hidden");
         document.getElementById("bookTab").classList.add("hidden");
         document.getElementById("registerTab").classList.add("hidden");
@@ -137,6 +140,7 @@ function getComments() {
 function getRegister() {
     if (document.getElementById("registerTab").classList.contains("hidden")) {
         document.getElementById("registerTab").classList.remove("hidden");
+        document.getElementById("homeTab").classList.add("hidden");
         document.getElementById("brTab").classList.add("hidden");
         document.getElementById("bookTab").classList.add("hidden");
         document.getElementById("guestBookTab").classList.add("hidden");
@@ -185,14 +189,22 @@ function registerUser() {
 
     xhr.send(jsonComment); 
 
-    if (username && password != null) {
-        document.getElementById("successMsg").innerHTML = "Registered Successfully";        
-    }
+    var successfulReg = '"User registered"';
 
     xhr.onload = function() {
         document.getElementById("regUsername").value = "";
         document.getElementById("regAddress").value = "";
         document.getElementById("regPassword").value = "";
+
+              
+        if (xhr.responseText == successfulReg) {
+            document.getElementById("successMsg").classList.add("success");
+            alert("hit")
+        } else {
+            document.getElementById("successMsg").classList.add("failure");
+        }
+
+        document.getElementById("successMsg").innerHTML = xhr.responseText; 
     }
 
 }
@@ -208,10 +220,13 @@ function buyBr(objPassed) {
     window.open("http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/brbuy?id=" + brId, "_blank");
 }
 
-function hideAll(hideId) {
-    var x = document.getElementById(hideId).children;
-    for (i=0;i<x.length;i++) {
-        x[i].hidden = true;
+function showHome() {
+    if (document.getElementById("homeTab").classList.contains("hidden")) {
+        document.getElementById("homeTab").classList.remove("hidden");
+        document.getElementById("guestBookTab").classList.add("hidden");
+        document.getElementById("brTab").classList.add("hidden");
+        document.getElementById("bookTab").classList.add("hidden");
+        document.getElementById("registerTab").classList.add("hidden");
     }
-    
+
 }
